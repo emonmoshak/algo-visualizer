@@ -1,0 +1,231 @@
+/* --- 1. Global Reset & Shadcn/Tailwind Palette --- */
+:root {
+    --background: #ffffff; /* White background */
+    --foreground: #020817; /* Dark text */
+    --muted: #f1f5f9;      /* Light grey background (secondary button) */
+    --muted-foreground: #64748b; /* Muted text */
+    --popover: #ffffff;   /* Card background */
+    --popover-foreground: #020817;
+    --border: #e2e8f0;     /* Border color */
+    --primary: #2563eb;    /* Blue */
+    --primary-hover: #1d4ed8; /* Darker Blue */
+    --destructive: #ef4444; /* Red */
+    --success: #22c55e;   /* Green */
+    --radius: 0.75rem;    /* 12px border radius */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    background-color: var(--muted);
+    color: var(--foreground);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* --- 2. Layout (Header, Main) --- */
+header {
+    background-color: var(--background);
+    padding: 1rem 2rem;
+    border-bottom: 1px solid var(--border);
+    text-align: center;
+}
+
+h1 {
+    font-size: 1.5rem; /* 24px */
+    font-weight: 600;
+    margin: 0;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem; /* 24px */
+    width: 100%;
+    max-width: 1200px;
+    margin: 1.5rem auto;
+}
+
+/* --- 3. Control Panel (Card Styling) --- */
+.controls {
+    background-color: var(--popover);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+/* --- 4. Modern Buttons --- */
+.btn {
+    padding: 0.6rem 1rem; /* 10px 16px */
+    font-size: 0.875rem; /* 14px */
+    font-weight: 500;
+    border-radius: 0.5rem; /* 8px */
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: #ffffff;
+    border-color: var(--primary);
+}
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+    border-color: var(--primary-hover);
+}
+
+.btn-secondary {
+    background-color: var(--muted);
+    color: var(--foreground);
+    border-color: var(--border);
+}
+.btn-secondary:hover {
+    background-color: #e2e8f0; /* Slightly darker grey */
+}
+
+/* Disabled State for all buttons */
+.btn:disabled {
+    background-color: var(--muted);
+    color: var(--muted-foreground);
+    cursor: not-allowed;
+    border-color: var(--border);
+}
+
+/* --- 5. Custom Select/Dropdown (The Fix) --- */
+.select-wrapper {
+    position: relative;
+}
+
+/* The custom arrow */
+.select-wrapper::after {
+    content: '▼';
+    font-size: 0.6rem;
+    color: var(--muted-foreground);
+    position: absolute;
+    right: 0.75rem; /* 12px */
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none; /* Lets clicks pass through to the select */
+}
+
+.controls select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 0.6rem 2.5rem 0.6rem 1rem; /* Space for arrow */
+    font-size: 0.875rem; /* 14px */
+    font-weight: 500;
+    border: 1px solid var(--border);
+    border-radius: 0.5rem; /* 8px */
+    background-color: var(--background);
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+    color: var(--foreground);
+}
+
+.controls select:hover {
+    border-color: #94a3b8; /* Darker border on hover */
+}
+
+.controls select:disabled {
+    background-color: var(--muted);
+    color: var(--muted-foreground);
+    cursor: not-allowed;
+}
+
+/* --- 6. Modern Sliders --- */
+.slider-container {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem; /* 12px */
+    font-size: 0.875rem; /* 14px */
+    color: var(--foreground);
+    font-weight: 500;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100px;
+    height: 8px; /* Thicker track */
+    background: var(--muted);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+}
+
+/* Slider Thumb (the circle) */
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: var(--primary);
+    border-radius: 50%;
+    border: 2px solid var(--background); /* White border */
+    box-shadow: 0 0 0 1px var(--primary);
+    transition: background 0.2s ease;
+}
+input[type="range"]::-moz-range-thumb {
+    width: 14px; /* Slightly smaller for moz */
+    height: 14px;
+    background: var(--primary);
+    border-radius: 50%;
+    border: 2px solid var(--background);
+    box-shadow: 0 0 0 1px var(--primary);
+}
+
+input[type="range"]:disabled::-webkit-slider-thumb {
+    background: var(--muted-foreground);
+    box-shadow: none;
+}
+input[type="range"]:disabled::-moz-range-thumb {
+    background: var(--muted-foreground);
+    box-shadow: none;
+}
+
+/* --- 7. Bar Container & Colors --- */
+#barContainer {
+    width: 100%;
+    min-height: 450px;
+    background-color: var(--background);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 0.5rem;
+    overflow: hidden; /* Prevents bars from overflowing corners */
+}
+
+.bar {
+    background-color: var(--primary);
+    margin: 0 1px;
+    transition: height 0.3s ease;
+}
+
+.bar-compare {
+    background-color: var(--destructive);
+}
+
+.bar-sorted {
+    background-color: var(--success);
+}

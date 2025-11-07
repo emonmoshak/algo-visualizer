@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>AlgoVisualizer</title>
+        <link href="/static/styles.css" rel="stylesheet">
+    </head>
+    <body>
+
+        <header>
+            <h1>AlgoVisualizer</h1>
+        </header>
+
+        <main>
+            <nav class="controls">
+                <button id="newArrayBtn" class="btn btn-secondary">Generate New Array</button>
+
+                <div class="select-wrapper">
+                    <select id="algoSelect">
+                        <option value="bubble">Bubble Sort</option>
+                        <option value="selection">Selection Sort</option>
+                        <option value="merge">Merge Sort</option>
+                    </select>
+                </div>
+
+                <div class="slider-container">
+                    <label for="speedSlider">Speed</label>
+                    <input type="range" id="speedSlider" min="10" max="100" value="50">
+                </div>
+
+                <div class="slider-container">
+                    <label for="barsSlider">Bars</label>
+                    <input type="range" id="barsSlider" min="10" max="100" value="60">
+                </div>
+
+                <button id="sortBtn" class="btn btn-primary">Sort!</button>
+            </nav>
+
+            <div id="barContainer">
+                </div>
+        </main>
+
+        <footer>
+            </footer>
+
+        <script src="/static/visualizer.js"></script>
+
+    </body>
+</html>
